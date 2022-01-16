@@ -1,0 +1,8 @@
+{% extends 'user/base.html' %}
+{% block content %}
+    {% for depart in user.get_departments %}
+        <li class="nav-item active">
+            <a class="nav-link" href="/">{{ depart.name }}<span class="sr-only"></span></a>
+        </li>
+    {% endfor %}
+{% endblock %}

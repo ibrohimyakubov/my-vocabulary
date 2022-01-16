@@ -1,0 +1,29 @@
+{% extends 'user/base.html' %}
+{% block content %}
+
+    <table class="table table-hover">
+        {% for vocab in vocabulary %}
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">English</th>
+                <th scope="col">Uzbek</th>
+                <th scope="col">Type</th>
+                <th scope="col">Definition</th>
+                <th scope="col">Audio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{ vocab.id }}</th>
+                <td>{{ vocab.title_en }}</td>
+                <td>{{ vocab.title_uz }}</td>
+                <td>{{ vocab.type }}</td>
+                <td>{{ vocab.definition }}</td>
+                <td>{{ vocab.audiofile }}</td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock %}

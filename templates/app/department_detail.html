@@ -1,0 +1,35 @@
+{% extends 'user/base.html' %}
+{% load mptt_tags %}
+{% block content %}
+    <style>
+        li {
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        .li-down {
+            height: 5px;
+            width: 30px;
+            background-color: red;
+        }
+    </style>
+    <div class="container mt-5">
+
+
+        <ul>
+            {% recursetree units %}
+                <li class="mt-4">
+                    <a href="{% url 'unit-vocabulary' uuid=node.id %}">{{ node.title }}</a>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            <li class="li-down"><a href="{% url 'unit-vocabulary' uuid=node.id %}">{{ children }}</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endrecursetree %}
+        </ul>
+
+    </div>
+
+{% endblock content %}
